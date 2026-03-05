@@ -110,13 +110,14 @@ export function useIsCallerAdmin() {
     queryKey: ["isCallerAdmin"],
     queryFn: async () => {
       if (!actor) return false;
-      try {
-        return await actor.isCallerAdmin();
-      } catch {
-        return false;
-      }
+      // Let errors propagate so isError is set correctly in consuming components.
+      // A canister trap (e.g. unauthorized caller) will reject the promise and
+      // cause isError=true, which AdminPage treats as "not yet admin".
+      return await actor.isCallerAdmin();
     },
     enabled: !!actor && !isFetching,
+    // Don't retry on error — a trap means the user is simply not admin yet
+    retry: false,
   });
 }
 

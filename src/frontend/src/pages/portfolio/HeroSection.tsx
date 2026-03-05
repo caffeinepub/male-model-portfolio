@@ -46,9 +46,9 @@ export function HeroSection({ onScrollToSection }: HeroSectionProps) {
         }}
       />
 
-      {/* Multi-layer overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/20" />
+      {/* Multi-layer overlay for depth — lighter so photo reads clearly */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/10" />
 
       {/* Subtle noise texture overlay */}
       <div
@@ -61,11 +61,11 @@ export function HeroSection({ onScrollToSection }: HeroSectionProps) {
         }}
       />
 
-      {/* Hero content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      {/* Hero content — anchored to bottom so face is fully visible */}
+      <div className="absolute bottom-24 left-0 right-0 z-10 text-center px-6">
         {/* Agency tag */}
         <p
-          className={`text-xs tracking-widest3 uppercase font-sans font-light text-white/50 mb-8 transition-all duration-1000 ${
+          className={`text-[10px] tracking-widest3 uppercase font-sans font-light text-white/45 mb-4 transition-all duration-1000 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ transitionDelay: "200ms" }}
@@ -79,7 +79,7 @@ export function HeroSection({ onScrollToSection }: HeroSectionProps) {
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{
-            fontSize: "clamp(3.5rem, 12vw, 11rem)",
+            fontSize: "clamp(2rem, 5vw, 4.5rem)",
             letterSpacing: "-0.02em",
             transitionDelay: "400ms",
           }}
@@ -90,19 +90,19 @@ export function HeroSection({ onScrollToSection }: HeroSectionProps) {
 
         {/* Thin divider */}
         <div
-          className={`flex items-center justify-center gap-4 my-8 transition-all duration-1000 ${
+          className={`flex items-center justify-center gap-3 my-4 transition-all duration-1000 ${
             loaded ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
           }`}
           style={{ transitionDelay: "700ms" }}
         >
-          <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold/60" />
-          <span className="text-gold text-xs">✦</span>
-          <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold/60" />
+          <div className="h-px w-10 bg-gradient-to-r from-transparent to-gold/50" />
+          <span className="text-gold text-[10px]">✦</span>
+          <div className="h-px w-10 bg-gradient-to-l from-transparent to-gold/50" />
         </div>
 
         {/* Tagline */}
         <p
-          className={`font-sans font-light text-sm tracking-widest2 uppercase text-white/70 transition-all duration-1000 ${
+          className={`font-sans font-light text-[10px] tracking-widest2 uppercase text-white/60 transition-all duration-1000 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ transitionDelay: "900ms" }}
